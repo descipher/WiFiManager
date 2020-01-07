@@ -276,10 +276,22 @@ int WiFiManager::connectWifi(String ssid, String pass) {
   DEBUG_WM(F("Connecting as wifi client..."));
 
   // check if we've got static_ip settings, if we do, use those.
-  if (_sta_static_ip) {
-    DEBUG_WM(F("Custom STA IP/GW/Subnet"));
-    WiFi.config(_sta_static_ip, _sta_static_gw, _sta_static_sn);
-    DEBUG_WM(WiFi.localIP());
+  if (_sta_static_dns2) {
+     DEBUG_WM(F("Custom STA IP/GW/Subnet/DNS1/DNS2"));
+     WiFi.config(_sta_static_ip, _sta_static_gw, _sta_static_sn, _sta_static_dns1, _sta_static_dns2);
+     DEBUG_WM(WiFi.localIP());
+  } else {   
+     if (_sta_static_dns1) {
+        DEBUG_WM(F("Custom STA IP/GW/Subnet/DNS1"));
+        WiFi.config(_sta_static_ip, _sta_static_gw, _sta_static_sn, _sta_static_dns1);
+        DEBUG_WM(WiFi.localIP());
+     }
+  } else {
+     if (_sta_static_ip) {
+        DEBUG_WM(F("Custom STA IP/GW/Subnet"));
+        WiFi.config(_sta_static_ip, _sta_static_gw, _sta_static_sn);
+        DEBUG_WM(WiFi.localIP());
+     }
   }
   //fix for auto connect racing issue
   if (WiFi.status() == WL_CONNECTED && (WiFi.SSID() == ssid)) {
