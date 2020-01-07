@@ -404,6 +404,21 @@ void WiFiManager::setSTAStaticIPConfig(IPAddress ip, IPAddress gw, IPAddress sn)
   _sta_static_sn = sn;
 }
 
+void WiFiManager::setSTAStaticIPConfig(IPAddress ip, IPAddress gw, IPAddress sn, IPAddress dns1) {
+  _sta_static_ip = ip;
+  _sta_static_gw = gw;
+  _sta_static_sn = sn;
+  _sta_static_dns1 = dns1; 
+}
+
+void WiFiManager::setSTAStaticIPConfig(IPAddress ip, IPAddress gw, IPAddress sn, IPAddress dns1,  IPAddress dns2) {
+  _sta_static_ip = ip;
+  _sta_static_gw = gw;
+  _sta_static_sn = sn;
+  _sta_static_dns1 = dns1; 
+  _sta_static_dns2 = dns2;  
+}
+
 void WiFiManager::setMinimumSignalQuality(int quality) {
   _minimumQuality = quality;
 }
