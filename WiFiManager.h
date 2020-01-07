@@ -144,7 +144,9 @@ class WiFiManager
     IPAddress     _sta_static_ip;
     IPAddress     _sta_static_gw;
     IPAddress     _sta_static_sn;
-
+    IPAddress     _sta_static_dns1;
+    IPAddress     _sta_static_dns2;
+   
     int           _paramsCount            = 0;
     int           _minimumQuality         = -1;
     boolean       _removeDuplicateAPs     = true;
